@@ -1,0 +1,47 @@
+.vl-pane { min-width: 0; }
+.vl-pane h2 { margin-bottom: 0; }
+.vl-custom { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 10px; margin: 10px 0; }
+.vl-custom .tools-field { flex: 1; min-width: 180px; max-width: 480px; }
+.vl-custom input { width: 100%; }
+.vl-pane .tools-field select { max-width: 100%; }
+.vl-pane .tools-field:has(select[aria-label="Starting shape"]) { min-width: 0; max-width: 100%; }
+.vl-summary { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 14px 0 4px; font-size: 0.9rem; }
+.vl-summary span { color: var(--muted); }
+.vl-path { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(144px, 1fr)); padding: 0; gap: 8px; margin: 10px 0; }
+.vl-path li { position: relative; border: var(--bw) solid var(--border); border-radius: 6px; background: var(--panel-2); min-width: 0; }
+.vl-path li.vl-active { border-color: var(--accent); background: var(--accent-tint); }
+.vl-step { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; width: 100%; text-align: left; border: 0; background: transparent; color: var(--text); padding: 10px 36px 10px 12px; border-radius: 6px; cursor: pointer; }
+.vl-step strong { font-size: 1.1rem; overflow-wrap: anywhere; }
+.vl-step small { color: var(--muted); font-size: 0.75rem; }
+.vl-step code { font-size: 0.8rem; white-space: nowrap; }
+.vl-audition { position: absolute; top: 6px; right: 4px; width: 28px; height: 28px; display: grid; place-items: center; background: transparent; border: 0; color: var(--text); border-radius: 4px; cursor: pointer; }
+.vl-audition:hover { background: var(--hover); }
+.vl-playback { padding: 12px 0; border-bottom: var(--bw) solid var(--border); }
+.vl-detail { padding: 12px 0; }
+.vl-heading, .vl-movement-header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.vl-heading h3, .vl-movement-header h3 { margin: 0; font-size: 1.05rem; }
+.vl-actions { margin-left: auto; display: flex; gap: 4px; }
+.vl-actions .btn { padding: 7px; }
+.vl-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 12px 0 0; font-size: 0.8rem; color: var(--muted); }
+.vl-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.vl-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+.vl-tone-swatch { background: var(--fb-tone); }
+.vl-held-swatch { background: var(--fb-accent); }
+.vl-next-swatch { border: var(--bw) dashed var(--fb-ok); background: transparent; }
+.vl-board .fretboard { min-width: 550px; max-height: 280px; }
+.vl-board.vl-wide .fretboard { min-width: 1000px; }
+.vl-movement-header { margin: 14px 0 8px; font-size: 0.85rem; }
+.vl-movement-header span { color: var(--muted); }
+.vl-table-wrap { max-width: 100%; overflow-x: auto; }
+.vl-movement { width: 100%; min-width: 420px; border-collapse: collapse; font-size: 0.9rem; }
+.vl-movement th, .vl-movement td { text-align: left; padding: 9px 12px; border-bottom: var(--bw) solid var(--border); white-space: nowrap; }
+.vl-movement thead th { font-weight: 500; color: var(--muted); font-size: 0.8rem; }
+.vl-movement small { color: var(--muted); margin-left: 6px; }
+.vl-movement .vl-held { background: var(--accent-tint); }
+.vl-direction { display: inline-flex; align-items: center; gap: 5px; }
+.vl-empty { border-top: var(--bw) solid var(--border); padding: 12px 0; }
+.vl-empty h3 { font-size: 1.05rem; margin: 8px 0; }
+@media (max-width: 800px) {
+  .vl-path { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .vl-movement th, .vl-movement td { padding: 8px 6px; }
+}

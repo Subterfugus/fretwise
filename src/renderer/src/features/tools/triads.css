@@ -1,0 +1,31 @@
+.triads-pane { gap: 14px; }
+.triads-section { padding: 12px 0; border-top: var(--bw) solid var(--border); }
+.triads-heading { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; justify-content: space-between; margin-top: 20px; }
+.triads-heading h2, .triads-summary h2 { font-size: 1.25rem; margin: 0; }
+.triads-section .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.triads-actions { flex-wrap: wrap; margin: 12px 0; }
+.triads-icon { width: 38px; height: 38px; padding: 0; flex: 0 0 38px; }
+.triads-shapes { min-height: 38px; margin: 12px 0; }
+.triads-feedback { padding: 12px 0; border-top: var(--bw) solid var(--border); line-height: 1.5; }
+.triads-feedback p { margin: 8px 0; }
+.triads-notes { width: 100%; max-width: 580px; margin: 12px 0; border-collapse: collapse; font-size: 0.9rem; }
+.triads-notes th, .triads-notes td { padding: 6px 10px; text-align: left; border-bottom: var(--bw) solid var(--border); }
+.triads-notes thead { color: var(--muted); }
+.triads-notes td:last-child { overflow-wrap: normal; }
+.triads-duplicate { color: var(--accent-2); }
+.triads-bass-label { color: var(--text); }
+.triads-changes { padding: 10px 0; border-top: var(--bw) solid var(--border); }
+.triads-changes summary { cursor: pointer; }
+.triads-changes li { margin: 8px 0; }
+.triads-audio-label { margin-bottom: 0; }
+.triads-summary { margin-bottom: 20px; }
+.triads-section p { overflow-wrap: anywhere; }
+.triads-section .tools-board { width: 100%; }
+.triads-section .tools-board .fretboard { min-width: 550px; }
+.triads-section .triads-wide-board .fretboard { min-width: 1040px; }
+@media (max-width: 600px) {
+  .triads-notes th, .triads-notes td { padding: 6px 4px; }
+  .triads-section .tools-controls { gap: 12px; }
+  .triads-section .tools-field { max-width: 100%; }
+  .triads-section .tools-seg { max-width: 100%; }
+}

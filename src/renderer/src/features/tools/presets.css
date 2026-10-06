@@ -1,0 +1,13 @@
+.preset-toolbar { display: flex; align-items: end; gap: 10px; flex-wrap: wrap; padding: 0 0 14px; border-bottom: var(--bw) solid var(--border); }
+.preset-picker { display: flex; flex-direction: column; gap: 5px; min-width: 160px; max-width: 280px; flex: 1 1 160px; }
+.preset-picker select { width: 100%; min-width: 0; }
+.preset-actions { display: flex; gap: 4px; }
+.preset-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; flex: none; }
+.preset-status { font-size: 12px; align-self: center; overflow-wrap: anywhere; }
+.preset-dialog { background: var(--panel); color: var(--text); border: var(--bw) solid var(--border); border-radius: 8px; width: min(420px, calc(100vw - 32px)); padding: 20px; }
+.preset-dialog::backdrop { background: var(--backdrop); }
+.preset-dialog-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.preset-dialog-head h3 { font-size: 18px; margin: 0; }
+.preset-dialog .tools-field input { width: 100%; min-width: 0; }
+.preset-dialog .row { justify-content: end; margin-top: 18px; }
+.preset-dialog p { overflow-wrap: anywhere; }

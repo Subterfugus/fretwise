@@ -1,0 +1,579 @@
+/*
+ * Fretwise colour themes.
+ *
+ * Every theme is a complete set of the same custom properties. The active theme is the
+ * data-theme attribute on <html> (set by src/themes.ts); Dark is also the :root default.
+ * The settings page previews each theme by putting data-theme on a card, so every block
+ * must define EVERY variable itself (including the derived tints). themes.test.ts enforces
+ * that, plus contrast ratios, and styles.css / feature CSS may not contain colour literals.
+ *
+  * Layout: one block per theme, same variable order in each.
+ */
+
+/* ---------- Dark (default) ---------- */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  /* Surfaces and text */
+  --bg: #121418;
+  --panel: #1b1e24;
+  --panel-2: #23272f;
+  --border: #2f343e;
+  --text: #e8e6e1;
+  --muted: #9097a3;
+  /* Accents and answer colours */
+  --accent: #f0a640;
+  --accent-2: #4fb3bf;
+  --ok: #5cc98a;
+  --bad: #e2625b;
+  --blue: #6c8cff;
+  /* Text on solid accent fills */
+  --on-accent: #1d1408;
+  --on-accent-2: #0b1d20;
+  --on-ok: #0d2016;
+  --on-bad: #ffffff;
+  /* Translucent tints (derived) */
+  --accent-tint: color-mix(in srgb, var(--accent) 15%, transparent);
+  --accent-tint-strong: color-mix(in srgb, var(--accent) 35%, transparent);
+  --accent-2-tint: color-mix(in srgb, var(--accent-2) 20%, transparent);
+  --ok-tint: color-mix(in srgb, var(--ok) 18%, transparent);
+  --bad-tint: color-mix(in srgb, var(--bad) 18%, transparent);
+  /* Hover washes, shadows, strokes */
+  --hover: rgba(255, 255, 255, 0.05);
+  --hover-2: rgba(255, 255, 255, 0.06);
+  --hairline: rgba(255, 255, 255, 0.04);
+  --shadow: rgba(0, 0, 0, 0.25);
+  --backdrop: rgba(0, 0, 0, 0.6);
+  --bw: 1px;
+  --focus-w: 2px;
+  /* Notation panel (VexFlow draws black, so this is always light) */
+  --notation-bg: #f4efe4;
+  /* Fretboard (drawn on --fb-wood) */
+  --fb-wood: #3a2a1d;
+  --fb-fret: #b9b4a8;
+  --fb-string: #d8d2c4;
+  --fb-nut: #efe8d8;
+  --fb-inlay: #d9cdb4;
+  --fb-inlay-opacity: 0.35;
+  --fb-ink: #111111;
+  --fb-edge: rgba(0, 0, 0, 0.35);
+  --fb-root: #f0a640;
+  --fb-tone: #e9e4d8;
+  --fb-accent: #4fb3bf;
+  --fb-blue: #6c8cff;
+  --fb-on-blue: #ffffff;
+  --fb-bad: #e2625b;
+  --fb-on-bad: #ffffff;
+  --fb-ok: #5cc98a;
+  --fb-on-ok: #ffffff;
+  --fb-label: #e8e6e1;
+  --fb-focus: var(--fb-label);
+  --fb-cell-hover: rgba(255, 255, 255, 0.05);
+  --fb-hover-bg: rgba(255, 255, 255, 0.18);
+  --fb-hover-ink: #ffffff;
+  --fb-mute-fill: #23272f;
+  --fb-mute-ink: #9097a3;
+  --fb-ring: #121418;
+  /* Capo */
+  --capo-fill: #3a3f4b;
+  --capo-stroke: #cfd5e2;
+  /* Chord diagrams and dictionary strips (drawn on --panel / --panel-2) */
+  --diagram-line: #b9b4a8;
+  --diagram-string: #d8d2c4;
+  --diagram-nut: #efe8d8;
+  --diagram-inlay: #d9cdb4;
+  --diagram-inlay-opacity: 0.4;
+  --diagram-disc: #e9e4d8;
+  --diagram-disc-edge: rgba(0, 0, 0, 0.4);
+  --diagram-open-edge: #e9e4d8;
+  --diagram-ink: #111111;
+  --diagram-root: #f0a640;
+  --diagram-sel-bg: #3a3326;
+  --swatch-edge: transparent;
+}
+
+/* ---------- Light ---------- */
+[data-theme="light"] {
+  color-scheme: light;
+  /* Surfaces and text */
+  --bg: #f2f4f8;
+  --panel: #ffffff;
+  --panel-2: #e8ecf3;
+  --border: #c3cad8;
+  --text: #1a202c;
+  --muted: #566073;
+  /* Accents and answer colours */
+  --accent: #b45309;
+  --accent-2: #0e7490;
+  --ok: #15803d;
+  --bad: #c0261d;
+  --blue: #4338ca;
+  /* Text on solid accent fills */
+  --on-accent: #ffffff;
+  --on-accent-2: #ffffff;
+  --on-ok: #ffffff;
+  --on-bad: #ffffff;
+  /* Translucent tints (derived) */
+  --accent-tint: color-mix(in srgb, var(--accent) 14%, transparent);
+  --accent-tint-strong: color-mix(in srgb, var(--accent) 30%, transparent);
+  --accent-2-tint: color-mix(in srgb, var(--accent-2) 16%, transparent);
+  --ok-tint: color-mix(in srgb, var(--ok) 14%, transparent);
+  --bad-tint: color-mix(in srgb, var(--bad) 14%, transparent);
+  /* Hover washes, shadows, strokes */
+  --hover: rgba(0, 0, 0, 0.05);
+  --hover-2: rgba(0, 0, 0, 0.07);
+  --hairline: rgba(0, 0, 0, 0.07);
+  --shadow: rgba(20, 30, 60, 0.18);
+  --backdrop: rgba(15, 20, 30, 0.5);
+  --bw: 1px;
+  --focus-w: 2px;
+  /* Notation panel (VexFlow draws black, so this is always light) */
+  --notation-bg: #f4efe4;
+  /* Fretboard (drawn on --fb-wood) */
+  --fb-wood: #5e3d24;
+  --fb-fret: #c9c3b6;
+  --fb-string: #e4dccb;
+  --fb-nut: #f1ead8;
+  --fb-inlay: #d9cdb4;
+  --fb-inlay-opacity: 0.35;
+  --fb-ink: #111111;
+  --fb-edge: rgba(0, 0, 0, 0.35);
+  --fb-root: #f0a640;
+  --fb-tone: #e9e4d8;
+  --fb-accent: #4fb3bf;
+  --fb-blue: #8ea2ff;
+  --fb-on-blue: #101020;
+  --fb-bad: #ef7066;
+  --fb-on-bad: #1a0a08;
+  --fb-ok: #5cc98a;
+  --fb-on-ok: #0d2016;
+  --fb-label: #f3ede0;
+  --fb-focus: var(--fb-label);
+  --fb-cell-hover: rgba(255, 255, 255, 0.08);
+  --fb-hover-bg: rgba(255, 255, 255, 0.18);
+  --fb-hover-ink: #ffffff;
+  --fb-mute-fill: #2a2f38;
+  --fb-mute-ink: #b4bcc9;
+  --fb-ring: #121418;
+  /* Capo */
+  --capo-fill: #3a3f4b;
+  --capo-stroke: #cfd5e2;
+  /* Chord diagrams and dictionary strips (drawn on --panel / --panel-2) */
+  --diagram-line: #7d8596;
+  --diagram-string: #5b6475;
+  --diagram-nut: #2b3240;
+  --diagram-inlay: #7d8596;
+  --diagram-inlay-opacity: 0.4;
+  --diagram-disc: #ffffff;
+  --diagram-disc-edge: rgba(0, 0, 0, 0.5);
+  --diagram-open-edge: #2b3240;
+  --diagram-ink: #111111;
+  --diagram-root: #f0a640;
+  --diagram-sel-bg: #fbe9cc;
+  --swatch-edge: rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- High contrast ---------- */
+[data-theme="high-contrast"] {
+  color-scheme: dark;
+  /* Surfaces and text */
+  --bg: #000000;
+  --panel: #0a0a0a;
+  --panel-2: #1c1c1c;
+  --border: #ffffff;
+  --text: #ffffff;
+  --muted: #d4d4d4;
+  /* Accents and answer colours */
+  --accent: #ffea00;
+  --accent-2: #00e5ff;
+  --ok: #5dff8f;
+  --bad: #ff6b6b;
+  --blue: #9fb0ff;
+  /* Text on solid accent fills */
+  --on-accent: #000000;
+  --on-accent-2: #000000;
+  --on-ok: #000000;
+  --on-bad: #000000;
+  /* Translucent tints (derived) */
+  --accent-tint: color-mix(in srgb, var(--accent) 24%, transparent);
+  --accent-tint-strong: color-mix(in srgb, var(--accent) 48%, transparent);
+  --accent-2-tint: color-mix(in srgb, var(--accent-2) 24%, transparent);
+  --ok-tint: color-mix(in srgb, var(--ok) 24%, transparent);
+  --bad-tint: color-mix(in srgb, var(--bad) 24%, transparent);
+  /* Hover washes, shadows, strokes */
+  --hover: rgba(255, 255, 255, 0.14);
+  --hover-2: rgba(255, 255, 255, 0.18);
+  --hairline: rgba(255, 255, 255, 0.25);
+  --shadow: rgba(0, 0, 0, 0.8);
+  --backdrop: rgba(0, 0, 0, 0.8);
+  --bw: 2px;
+  --focus-w: 3px;
+  /* Notation panel (VexFlow draws black, so this is always light) */
+  --notation-bg: #ffffff;
+  /* Fretboard (drawn on --fb-wood) */
+  --fb-wood: #141414;
+  --fb-fret: #ffffff;
+  --fb-string: #ffffff;
+  --fb-nut: #ffffff;
+  --fb-inlay: #ffffff;
+  --fb-inlay-opacity: 0.45;
+  --fb-ink: #000000;
+  --fb-edge: rgba(0, 0, 0, 0.6);
+  --fb-root: #ffea00;
+  --fb-tone: #ffffff;
+  --fb-accent: #00e5ff;
+  --fb-blue: #9fb0ff;
+  --fb-on-blue: #000000;
+  --fb-bad: #ff6b6b;
+  --fb-on-bad: #000000;
+  --fb-ok: #5dff8f;
+  --fb-on-ok: #000000;
+  --fb-label: #ffffff;
+  --fb-focus: var(--fb-label);
+  --fb-cell-hover: rgba(255, 255, 255, 0.2);
+  --fb-hover-bg: rgba(255, 255, 255, 0.3);
+  --fb-hover-ink: #ffffff;
+  --fb-mute-fill: #000000;
+  --fb-mute-ink: #e0e0e0;
+  --fb-ring: #000000;
+  /* Capo */
+  --capo-fill: #333333;
+  --capo-stroke: #ffffff;
+  /* Chord diagrams and dictionary strips (drawn on --panel / --panel-2) */
+  --diagram-line: #d4d4d4;
+  --diagram-string: #ffffff;
+  --diagram-nut: #ffffff;
+  --diagram-inlay: #ffffff;
+  --diagram-inlay-opacity: 0.4;
+  --diagram-disc: #ffffff;
+  --diagram-disc-edge: rgba(0, 0, 0, 0.8);
+  --diagram-open-edge: #ffffff;
+  --diagram-ink: #000000;
+  --diagram-root: #ffea00;
+  --diagram-sel-bg: #3a3500;
+  --swatch-edge: transparent;
+}
+
+/* ---------- Stage ---------- */
+[data-theme="stage"] {
+  color-scheme: dark;
+  /* Surfaces and text */
+  --bg: #000000;
+  --panel: #0b0b0e;
+  --panel-2: #17171c;
+  --border: #2c2c36;
+  --text: #f4f4f6;
+  --muted: #9d9daa;
+  /* Accents and answer colours */
+  --accent: #ff8a00;
+  --accent-2: #00d9ff;
+  --ok: #35f08a;
+  --bad: #ff4d6a;
+  --blue: #8a96ff;
+  /* Text on solid accent fills */
+  --on-accent: #000000;
+  --on-accent-2: #000000;
+  --on-ok: #000000;
+  --on-bad: #000000;
+  /* Translucent tints (derived) */
+  --accent-tint: color-mix(in srgb, var(--accent) 16%, transparent);
+  --accent-tint-strong: color-mix(in srgb, var(--accent) 38%, transparent);
+  --accent-2-tint: color-mix(in srgb, var(--accent-2) 20%, transparent);
+  --ok-tint: color-mix(in srgb, var(--ok) 18%, transparent);
+  --bad-tint: color-mix(in srgb, var(--bad) 18%, transparent);
+  /* Hover washes, shadows, strokes */
+  --hover: rgba(255, 255, 255, 0.06);
+  --hover-2: rgba(255, 255, 255, 0.08);
+  --hairline: rgba(255, 255, 255, 0.05);
+  --shadow: rgba(0, 0, 0, 0.6);
+  --backdrop: rgba(0, 0, 0, 0.75);
+  --bw: 1px;
+  --focus-w: 2px;
+  /* Notation panel (VexFlow draws black, so this is always light) */
+  --notation-bg: #ece6d6;
+  /* Fretboard (drawn on --fb-wood) */
+  --fb-wood: #0f0a07;
+  --fb-fret: #77716a;
+  --fb-string: #d2cbbb;
+  --fb-nut: #e8e0cc;
+  --fb-inlay: #d9cdb4;
+  --fb-inlay-opacity: 0.3;
+  --fb-ink: #000000;
+  --fb-edge: rgba(0, 0, 0, 0.5);
+  --fb-root: #ff8a00;
+  --fb-tone: #f4f4f6;
+  --fb-accent: #00d9ff;
+  --fb-blue: #8a96ff;
+  --fb-on-blue: #000000;
+  --fb-bad: #ff4d6a;
+  --fb-on-bad: #000000;
+  --fb-ok: #35f08a;
+  --fb-on-ok: #000000;
+  --fb-label: #f4f4f6;
+  --fb-focus: var(--fb-label);
+  --fb-cell-hover: rgba(255, 255, 255, 0.07);
+  --fb-hover-bg: rgba(255, 255, 255, 0.2);
+  --fb-hover-ink: #ffffff;
+  --fb-mute-fill: #17171c;
+  --fb-mute-ink: #9d9daa;
+  --fb-ring: #000000;
+  /* Capo */
+  --capo-fill: #2a2d38;
+  --capo-stroke: #cfd5e2;
+  /* Chord diagrams and dictionary strips (drawn on --panel / --panel-2) */
+  --diagram-line: #7d7d89;
+  --diagram-string: #cfcfd8;
+  --diagram-nut: #f0f0f4;
+  --diagram-inlay: #cfcfd8;
+  --diagram-inlay-opacity: 0.4;
+  --diagram-disc: #f4f4f6;
+  --diagram-disc-edge: rgba(0, 0, 0, 0.5);
+  --diagram-open-edge: #f4f4f6;
+  --diagram-ink: #000000;
+  --diagram-root: #ff8a00;
+  --diagram-sel-bg: #2a1d0c;
+  --swatch-edge: transparent;
+}
+
+/* ---------- Sunburst ---------- */
+[data-theme="sunburst"] {
+  color-scheme: dark;
+  /* Surfaces and text */
+  --bg: #170d08;
+  --panel: #231209;
+  --panel-2: #321b0f;
+  --border: #5b3319;
+  --text: #f8ead6;
+  --muted: #cdae8c;
+  /* Accents and answer colours */
+  --accent: #ff9626;
+  --accent-2: #ffd77a;
+  --ok: #8fdc5f;
+  --bad: #ff6a5c;
+  --blue: #8fa6ff;
+  /* Text on solid accent fills */
+  --on-accent: #1f0f04;
+  --on-accent-2: #2a1a02;
+  --on-ok: #0f2406;
+  --on-bad: #230806;
+  /* Translucent tints (derived) */
+  --accent-tint: color-mix(in srgb, var(--accent) 16%, transparent);
+  --accent-tint-strong: color-mix(in srgb, var(--accent) 36%, transparent);
+  --accent-2-tint: color-mix(in srgb, var(--accent-2) 20%, transparent);
+  --ok-tint: color-mix(in srgb, var(--ok) 18%, transparent);
+  --bad-tint: color-mix(in srgb, var(--bad) 18%, transparent);
+  /* Hover washes, shadows, strokes */
+  --hover: rgba(255, 220, 180, 0.06);
+  --hover-2: rgba(255, 220, 180, 0.08);
+  --hairline: rgba(255, 220, 180, 0.06);
+  --shadow: rgba(0, 0, 0, 0.45);
+  --backdrop: rgba(10, 4, 0, 0.7);
+  --bw: 1px;
+  --focus-w: 2px;
+  /* Notation panel (VexFlow draws black, so this is always light) */
+  --notation-bg: #f6ecd8;
+  /* Fretboard (drawn on --fb-wood) */
+  --fb-wood: #43190c;
+  --fb-fret: #d8b878;
+  --fb-string: #f5e4c4;
+  --fb-nut: #f6ebd0;
+  --fb-inlay: #f2dcae;
+  --fb-inlay-opacity: 0.4;
+  --fb-ink: #1a0d05;
+  --fb-edge: rgba(0, 0, 0, 0.4);
+  --fb-root: #ff9626;
+  --fb-tone: #f6ecd8;
+  --fb-accent: #ffd77a;
+  --fb-blue: #8fa6ff;
+  --fb-on-blue: #0d1030;
+  --fb-bad: #ff6a5c;
+  --fb-on-bad: #230806;
+  --fb-ok: #8fdc5f;
+  --fb-on-ok: #0f2406;
+  --fb-label: #f8ead6;
+  --fb-focus: var(--fb-label);
+  --fb-cell-hover: rgba(255, 235, 200, 0.07);
+  --fb-hover-bg: rgba(255, 235, 200, 0.2);
+  --fb-hover-ink: #ffffff;
+  --fb-mute-fill: #321b0f;
+  --fb-mute-ink: #cdae8c;
+  --fb-ring: #170d08;
+  /* Capo */
+  --capo-fill: #4a2a1a;
+  --capo-stroke: #e9d3b0;
+  /* Chord diagrams and dictionary strips (drawn on --panel / --panel-2) */
+  --diagram-line: #c9a77a;
+  --diagram-string: #ead7b6;
+  --diagram-nut: #f6ebd0;
+  --diagram-inlay: #ead7b6;
+  --diagram-inlay-opacity: 0.4;
+  --diagram-disc: #f6ecd8;
+  --diagram-disc-edge: rgba(0, 0, 0, 0.4);
+  --diagram-open-edge: #f6ecd8;
+  --diagram-ink: #1a0d05;
+  --diagram-root: #ff9626;
+  --diagram-sel-bg: #4a2a12;
+  --swatch-edge: transparent;
+}
+
+/* ---------- Maple ---------- */
+[data-theme="maple"] {
+  color-scheme: light;
+  /* Surfaces and text */
+  --bg: #f7f0e0;
+  --panel: #fffaf0;
+  --panel-2: #efe4cc;
+  --border: #d2c19b;
+  --text: #2b2014;
+  --muted: #665440;
+  /* Accents and answer colours */
+  --accent: #b4500f;
+  --accent-2: #1f766f;
+  --ok: #2f7d33;
+  --bad: #a8123a;
+  --blue: #3949c8;
+  /* Text on solid accent fills */
+  --on-accent: #ffffff;
+  --on-accent-2: #ffffff;
+  --on-ok: #ffffff;
+  --on-bad: #ffffff;
+  /* Translucent tints (derived) */
+  --accent-tint: color-mix(in srgb, var(--accent) 14%, transparent);
+  --accent-tint-strong: color-mix(in srgb, var(--accent) 30%, transparent);
+  --accent-2-tint: color-mix(in srgb, var(--accent-2) 16%, transparent);
+  --ok-tint: color-mix(in srgb, var(--ok) 14%, transparent);
+  --bad-tint: color-mix(in srgb, var(--bad) 14%, transparent);
+  /* Hover washes, shadows, strokes */
+  --hover: rgba(60, 40, 10, 0.06);
+  --hover-2: rgba(60, 40, 10, 0.08);
+  --hairline: rgba(60, 40, 10, 0.08);
+  --shadow: rgba(80, 50, 10, 0.2);
+  --backdrop: rgba(40, 28, 10, 0.5);
+  --bw: 1px;
+  --focus-w: 2px;
+  /* Notation panel (VexFlow draws black, so this is always light) */
+  --notation-bg: #fffdf6;
+  /* Fretboard (drawn on --fb-wood) */
+  --fb-wood: #e9cb92;
+  --fb-fret: #6f695e;
+  --fb-string: #4b4338;
+  --fb-nut: #6d5a3d;
+  --fb-inlay: #000000;
+  --fb-inlay-opacity: 0.8;
+  --fb-ink: #ffffff;
+  --fb-edge: rgba(0, 0, 0, 0.35);
+  --fb-root: #c2410c;
+  --fb-tone: #3d2e1c;
+  --fb-accent: #0f766e;
+  --fb-blue: #3949c8;
+  --fb-on-blue: #ffffff;
+  --fb-bad: #a8123a;
+  --fb-on-bad: #ffffff;
+  --fb-ok: #2f7d33;
+  --fb-on-ok: #ffffff;
+  --fb-label: #2b2014;
+  --fb-focus: var(--fb-label);
+  --fb-cell-hover: rgba(0, 0, 0, 0.07);
+  --fb-hover-bg: rgba(30, 20, 8, 0.75);
+  --fb-hover-ink: #ffffff;
+  --fb-mute-fill: #fffaf0;
+  --fb-mute-ink: #665440;
+  --fb-ring: #2b2014;
+  /* Capo */
+  --capo-fill: #5a4b36;
+  --capo-stroke: #fffaf0;
+  /* Chord diagrams and dictionary strips (drawn on --panel / --panel-2) */
+  --diagram-line: #8a7650;
+  --diagram-string: #5f4f36;
+  --diagram-nut: #3b2e1c;
+  --diagram-inlay: #3b2e1c;
+  --diagram-inlay-opacity: 0.4;
+  --diagram-disc: #ffffff;
+  --diagram-disc-edge: rgba(0, 0, 0, 0.5);
+  --diagram-open-edge: #3b2e1c;
+  --diagram-ink: #111111;
+  --diagram-root: #f0a640;
+  --diagram-sel-bg: #f7e2b8;
+  --swatch-edge: rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Surf Green ---------- */
+[data-theme="surf-green"] {
+  color-scheme: light;
+  /* Surfaces and text */
+  --bg: #d4ebe0;
+  --panel: #f6f3e4;
+  --panel-2: #c6e3d5;
+  --border: #8fbfa8;
+  --text: #0f2b25;
+  --muted: #34574c;
+  /* Accents and answer colours */
+  --accent: #8f5000;
+  --accent-2: #1d4fa8;
+  --ok: #17703a;
+  --bad: #b3261e;
+  --blue: #6d3fc4;
+  /* Text on solid accent fills */
+  --on-accent: #ffffff;
+  --on-accent-2: #ffffff;
+  --on-ok: #ffffff;
+  --on-bad: #ffffff;
+  /* Translucent tints (derived) */
+  --accent-tint: color-mix(in srgb, var(--accent) 14%, transparent);
+  --accent-tint-strong: color-mix(in srgb, var(--accent) 30%, transparent);
+  --accent-2-tint: color-mix(in srgb, var(--accent-2) 16%, transparent);
+  --ok-tint: color-mix(in srgb, var(--ok) 16%, transparent);
+  --bad-tint: color-mix(in srgb, var(--bad) 14%, transparent);
+  /* Hover washes, shadows, strokes */
+  --hover: rgba(10, 60, 40, 0.07);
+  --hover-2: rgba(10, 60, 40, 0.09);
+  --hairline: rgba(10, 60, 40, 0.1);
+  --shadow: rgba(10, 50, 40, 0.22);
+  --backdrop: rgba(5, 30, 24, 0.55);
+  --bw: 1px;
+  --focus-w: 2px;
+  /* Notation panel (VexFlow draws black, so this is always light) */
+  --notation-bg: #fbf8ec;
+  /* Fretboard (drawn on --fb-wood) */
+  --fb-wood: #4a2c1d;
+  --fb-fret: #cfc9b8;
+  --fb-string: #ece5d0;
+  --fb-nut: #f2ecd8;
+  --fb-inlay: #e9dcc0;
+  --fb-inlay-opacity: 0.4;
+  --fb-ink: #111111;
+  --fb-edge: rgba(0, 0, 0, 0.35);
+  --fb-root: #f2b53a;
+  --fb-tone: #efe8d4;
+  --fb-accent: #5ed1c0;
+  --fb-blue: #9aa8ff;
+  --fb-on-blue: #0e1030;
+  --fb-bad: #ff7468;
+  --fb-on-bad: #200705;
+  --fb-ok: #6fd98f;
+  --fb-on-ok: #082010;
+  --fb-label: #f3ecdb;
+  --fb-focus: var(--fb-label);
+  --fb-cell-hover: rgba(255, 255, 255, 0.08);
+  --fb-hover-bg: rgba(255, 255, 255, 0.2);
+  --fb-hover-ink: #ffffff;
+  --fb-mute-fill: #2a1b12;
+  --fb-mute-ink: #cdbf9f;
+  --fb-ring: #1b0f08;
+  /* Capo */
+  --capo-fill: #3a4a45;
+  --capo-stroke: #e6efe9;
+  /* Chord diagrams and dictionary strips (drawn on --panel / --panel-2) */
+  --diagram-line: #58786b;
+  --diagram-string: #4b6b5f;
+  --diagram-nut: #20382f;
+  --diagram-inlay: #4b6b5f;
+  --diagram-inlay-opacity: 0.4;
+  --diagram-disc: #ffffff;
+  --diagram-disc-edge: rgba(0, 0, 0, 0.5);
+  --diagram-open-edge: #20382f;
+  --diagram-ink: #111111;
+  --diagram-root: #f2b53a;
+  --diagram-sel-bg: #f0e3b8;
+  --swatch-edge: rgba(0, 0, 0, 0.4);
+}

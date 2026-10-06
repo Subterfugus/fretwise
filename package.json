@@ -1,0 +1,56 @@
+{
+    "name": "fretwise",
+    "productName": "Fretwise",
+    "version": "0.1.0",
+    "description": "Guitar-first music theory teacher with lessons, unit quizzes and ear training",
+    "main": "./out/main/index.js",
+    "private": true,
+    "scripts": {
+        "dev": "electron-vite dev",
+        "build": "electron-vite build",
+        "start": "electron-vite preview",
+        "typecheck": "tsc --noEmit -p tsconfig.json",
+        "test": "vitest run",
+        "fetch-samples": "node scripts/fetch-samples.mjs",
+        "build:win": "electron-vite build && electron-builder --win",
+        "render-icon": "electron scripts/render-icon.cjs"
+    },
+    "build": {
+        "appId": "com.fretwise.app",
+        "productName": "Fretwise",
+        "directories": {
+            "output": "dist"
+        },
+        "files": [
+            "out/**/*",
+            "package.json"
+        ],
+        "win": {
+            "target": "nsis",
+            "icon": "build/icon.png"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        }
+    },
+    "dependencies": {
+        "lucide-react": "^1.49.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "tone": "^15.1.22",
+        "vexflow": "^5.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^26.6.3",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^5.2.0",
+        "electron": "^44.5.1",
+        "electron-builder": "^26.15.3",
+        "electron-vite": "^5.0.0",
+        "typescript": "^7.0.2",
+        "vite": "^7.3.6",
+        "vitest": "^5.0.3"
+    }
+}

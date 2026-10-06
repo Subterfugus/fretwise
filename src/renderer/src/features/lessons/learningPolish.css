@@ -1,0 +1,82 @@
+/* Learning surfaces share reading rhythm while diagrams retain their own sizing. */
+.lesson .crumbs { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; margin-bottom: 16px; font-size: 13px; line-height: 1.5; }
+.lesson .crumbs .link { text-align: left; }
+.lesson .lesson-heading { align-items: center; margin: 0 0 12px; }
+.lesson .lesson-heading h1 { margin: 0; overflow-wrap: anywhere; }
+.lesson .lead, .unit-page .lead { max-width: 72ch; line-height: 1.65; margin-bottom: 20px; }
+.lesson .builds-on { max-width: 76ch; line-height: 1.7; padding: 12px 0; margin: 0 0 26px; border-top: var(--bw) solid var(--border); border-bottom: var(--bw) solid var(--border); }
+.lesson .blocks { display: flex; flex-direction: column; gap: 24px; }
+.lesson .blocks > [data-lesson-block] { min-width: 0; }
+.lesson .b-text { max-width: 76ch; line-height: 1.75; }
+.lesson .b-text p { margin: 0 0 14px; }
+.lesson .b-text p:last-child { margin-bottom: 0; }
+.lesson .b-text h3 { font-size: 20px; line-height: 1.4; margin: 12px 0 12px; }
+.lesson .b-text li { margin: 6px 0; }
+.lesson .b-tip, .lesson .b-tryit { margin: 0; border-radius: 6px; padding: 16px 20px; }
+.lesson .b-tip-title, .lesson .b-tryit-title { text-transform: none; letter-spacing: 0; font-size: 13px; }
+.lesson .b-figure { margin: 0; }
+.lesson .b-figure figcaption { align-items: flex-start; flex-wrap: wrap; gap: 10px 16px; font-size: 13px; line-height: 1.6; margin-top: 12px; }
+.lesson .b-figure figcaption > span { flex: 1 1 260px; }
+.lesson .b-table th, .lesson .b-table td { padding: 10px 14px; line-height: 1.5; }
+.lesson .b-figure:has(.b-table) { overflow-x: auto; }
+.lesson .b-table { min-width: 420px; }
+.lesson .lesson-foot { align-items: stretch; gap: 14px; margin-top: 36px; padding-top: 24px; }
+.lesson .lesson-foot .btn { white-space: normal; text-align: left; min-width: 0; max-width: 60%; }
+.lesson .lesson-foot .btn svg { flex: none; }
+.unit-page .eyebrow { letter-spacing: 0; text-transform: none; font-size: 13px; line-height: 1.5; margin-bottom: 10px; }
+.unit-page .locked-card { border-radius: 6px; line-height: 1.65; }
+.unit-page .locked-card strong svg { vertical-align: -3px; }
+.unit-page .lesson-list { border-top: var(--bw) solid var(--border); margin-top: 28px; }
+.unit-page .lesson-list > li { border-bottom: var(--bw) solid var(--border); }
+.unit-page .lesson-entry { gap: 0; }
+.unit-page .lesson-item { border: 0; border-radius: 0; background: transparent; margin: 0; padding: 18px 12px 18px 0; gap: 16px; }
+.unit-page .lesson-entry:hover { background: var(--hover); }
+.unit-page .lesson-item:hover:not(:disabled) { background: var(--hover); }
+.unit-page .lesson-num { width: 32px; height: 32px; flex: 0 0 32px; border-radius: 6px; font-size: 13px; display: grid; place-items: center; }
+.unit-page .lesson-title { font-size: 16px; line-height: 1.45; }
+.unit-page .lesson-sum { margin-top: 4px; line-height: 1.6; }
+.unit-page .lesson-text { min-width: 0; overflow-wrap: anywhere; }
+.unit-page .chev { flex: none; }
+.unit-page .quiz-item { border-top: 0; padding-top: 22px; padding-bottom: 22px; }
+.quiz, .quiz-intro, .quiz-result { letter-spacing: 0; }
+.quiz { padding-top: 32px; }
+.quiz-intro, .quiz-result { margin: 36px auto 80px; max-width: 820px; padding: 0; }
+.quiz-intro h2, .quiz-result h2 { font-size: 26px; line-height: 1.35; margin: 0 0 16px; display: flex; align-items: center; gap: 10px; }
+.quiz-intro h2 svg, .quiz-result h2 svg { flex: none; color: var(--ok); }
+.quiz-intro p, .quiz-result p { max-width: 68ch; line-height: 1.7; }
+.quiz-intro > .row, .quiz-result > .row { margin-top: 28px; padding-top: 20px; border-top: var(--bw) solid var(--border); }
+.quiz .quiz-head { margin-bottom: 28px; font-variant-numeric: tabular-nums; }
+.quiz .quiz-body { border-top: var(--bw) solid var(--border); padding-top: 24px; }
+.quiz .quiz-body > .row.end { margin-top: 24px; padding-top: 18px; border-top: var(--bw) solid var(--border); }
+.quiz-result .score { font-size: 52px; line-height: 1.2; margin: 16px 0; font-variant-numeric: tabular-nums; }
+.quiz-result .review { margin-top: 24px; }
+.quiz-result .review summary { cursor: pointer; padding: 12px 0; line-height: 1.5; }
+.quiz-result .review-item { padding: 18px 0; }
+.question .q-prompt { font-size: 18px; line-height: 1.65; max-width: 76ch; }
+.question .q-prompt p { margin: 0 0 16px; }
+.question .q-play { margin: 0 0 20px; }
+.question .q-choices { margin-top: 20px; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+.question .q-choice { min-height: 48px; padding: 12px 16px; border-radius: 6px; line-height: 1.5; overflow-wrap: anywhere; }
+.question .q-input { margin-top: 18px; align-items: stretch; }
+.question .q-input input { min-width: 0; flex: 1; }
+.question .q-actions { flex-wrap: wrap; gap: 10px; align-items: center; }
+.question .q-feedback { margin-top: 22px; padding: 16px 18px; border-radius: 6px; line-height: 1.65; }
+.question .q-explain { font-size: 14px; margin-top: 8px; }
+.question .q-explain p { margin: 0 0 10px; }
+.question .q-explain p:last-child { margin-bottom: 0; }
+@media (max-width: 760px) {
+  .quiz { padding: 24px 24px 64px; }
+  .quiz-intro, .quiz-result { width: calc(100% - 48px); margin-top: 28px; }
+  .lesson .lesson-foot { flex-wrap: wrap; }
+  .lesson .lesson-foot .btn { max-width: 100%; flex: 1 1 100%; }
+  .lesson .b-tip, .lesson .b-tryit { padding: 14px 16px; }
+}
+@media (max-width: 480px) {
+  .quiz { padding: 20px 16px 48px; }
+  .quiz-intro, .quiz-result { width: calc(100% - 32px); }
+  .quiz .quiz-head { gap: 10px; flex-wrap: wrap; }
+  .quiz .quiz-bar { min-width: 80px; }
+  .question .q-input { flex-wrap: wrap; }
+  .question .q-input input { flex-basis: 100%; }
+  .unit-page .lesson-item { gap: 10px; }
+}

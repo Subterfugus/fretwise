@@ -1,0 +1,180 @@
+/* Tuner & play-along. All classes are prefixed mic- */
+.mic-page h1 { margin-bottom: 4px; }
+.mic-hint { font-size: 13px; margin: 10px 0 0; }
+.mic-error { color: var(--bad); margin: 10px 0 0; font-size: 14px; }
+.mic-glyph { color: var(--accent); margin-right: 6px; }
+
+/* mic bar */
+.mic-bar-main { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.mic-bar-level { flex: 1; min-width: 200px; }
+.mic-bar-opts { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+.mic-field { display: inline-flex; align-items: center; gap: 8px; }
+.mic-field select { max-width: 260px; padding: 6px 8px; }
+.mic-a4 { width: 64px; text-align: center; padding: 6px 4px; }
+.mic-step { padding: 4px 10px; }
+.mic-meter { position: relative; height: 14px; background: var(--panel-2); border: var(--bw) solid var(--border); border-radius: 7px; overflow: hidden; }
+.mic-meter-fill { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, var(--accent-2), var(--ok)); transition: width 0.05s linear; }
+.mic-meter-fill.clip { background: var(--bad); }
+.mic-meter-hold { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--text); opacity: 0.7; }
+.mic-meter-gate { position: absolute; top: -1px; bottom: -1px; width: 2px; background: var(--accent); }
+
+/* tabs */
+.mic-tabs { display: flex; gap: 4px; border-bottom: var(--bw) solid var(--border); margin: 22px 0 8px; }
+.mic-tab { background: none; border: none; padding: 10px 18px; cursor: pointer; color: var(--muted); border-bottom: calc(var(--bw) * 2) solid transparent; margin-bottom: -1px; }
+.mic-tab:hover { color: var(--text); }
+.mic-tab.active { color: var(--text); border-bottom-color: var(--accent); font-weight: 600; }
+
+/* tuner */
+.mic-modes { display: flex; gap: 8px; margin: 14px 0 0; }
+.mic-gauge { display: grid; grid-template-columns: minmax(260px, 1.2fr) 1fr; gap: 18px; align-items: center; transition: border-color 0.2s, box-shadow 0.2s; }
+.mic-gauge.in-tune { border-color: var(--ok); box-shadow: 0 0 0 1px var(--ok), 0 0 24px color-mix(in srgb, var(--ok) 25%, transparent); }
+.mic-gauge.idle .mic-readout { opacity: 0.8; }
+.mic-gauge-svg { width: 100%; height: auto; }
+.mic-arc { fill: none; stroke: var(--border); stroke-width: 10; stroke-linecap: round; }
+.mic-arc.zone { stroke: var(--ok); stroke-linecap: butt; opacity: 0.9; }
+.mic-tick { stroke: var(--muted); stroke-width: 2; }
+.mic-tick.zero { stroke: var(--ok); stroke-width: 3; }
+.mic-tick-label { fill: var(--muted); font-size: 11px; }
+.mic-needle { transition: transform 0.12s ease-out; }
+.mic-needle line { stroke: var(--accent); stroke-width: 4; stroke-linecap: round; }
+.mic-needle circle { fill: var(--accent); }
+.mic-needle.tuned line { stroke: var(--ok); }
+.mic-needle.tuned circle { fill: var(--ok); }
+.mic-needle.idle { opacity: 0.25; }
+.mic-readout { text-align: center; }
+.mic-note { font-size: 56px; line-height: 1; font-weight: 700; letter-spacing: 0; min-height: 60px; }
+.mic-note sub { font-size: 28px; font-weight: 500; color: var(--muted); margin-left: 2px; }
+.mic-sub { font-size: 14px; margin-top: 2px; }
+.mic-cents { font-size: 22px; font-weight: 600; margin-top: 10px; font-variant-numeric: tabular-nums; }
+.mic-cents.ok { color: var(--ok); }
+.mic-cents.off { color: var(--accent); }
+.mic-verdict { min-height: 24px; font-size: 16px; }
+.mic-hz { font-size: 13px; font-variant-numeric: tabular-nums; }
+.mic-strings { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 8px; }
+.mic-string { background: var(--panel); border: var(--bw) solid var(--border); border-radius: var(--radius); display: flex; flex-direction: column; overflow: hidden; transition: border-color 0.15s; }
+.mic-string.active { border-color: var(--accent); }
+.mic-string.tuned { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 10%, transparent); }
+.mic-string.locked { box-shadow: inset 0 0 0 1px var(--accent-2); }
+.mic-string-main { background: none; border: none; cursor: pointer; padding: 10px 6px 4px; display: flex; flex-direction: column; align-items: center; gap: 0; }
+.mic-string-name { font-size: 26px; font-weight: 700; }
+.mic-ref { border: none; border-top: var(--bw) solid var(--border); border-radius: 0; padding: 6px; font-size: 13px; }
+
+/* exercises */
+.mic-settings { margin-top: 18px; }
+.mic-field-row { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
+.mic-label { font-size: 12px; letter-spacing: 0; color: var(--muted); margin-bottom: 8px; }
+.mic-seg { display: inline-flex; gap: 6px; }
+.mic-seg .btn { text-transform: capitalize; padding: 6px 14px; }
+.mic-check { display: inline-flex; gap: 10px; align-items: flex-start; cursor: pointer; max-width: 260px; }
+.mic-check input { margin-top: 5px; accent-color: var(--accent); }
+.mic-check .muted { display: block; font-size: 13px; }
+.mic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 14px; }
+.mic-card { margin: 0; display: flex; flex-direction: column; }
+.mic-card h3 { margin: 0; }
+.mic-card-top { display: flex; align-items: center; gap: 10px; }
+.mic-card-top .mic-glyph { font-size: 24px; margin: 0; }
+.mic-card p { margin: 8px 0; flex: 1; }
+.mic-card-stat { font-size: 13px; }
+
+.mic-session-head { margin-top: 18px; }
+.mic-session-head h2 { margin: 0; }
+.mic-badge { background: var(--panel-2); border: var(--bw) solid var(--border); border-radius: 999px; padding: 1px 10px; font-size: 12px; text-transform: capitalize; color: var(--muted); }
+.mic-prompt-card { margin-top: 12px; }
+.mic-prompt { font-size: 22px; line-height: 1.35; margin: 0 0 10px; }
+.mic-bignote { font-size: 44px; font-weight: 700; margin: 8px 0 4px; line-height: 1.15; }
+.mic-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.mic-chip { min-width: 38px; text-align: center; padding: 3px 10px; border-radius: 999px; border: var(--bw) solid var(--border); background: var(--panel-2); color: var(--muted); font-weight: 600; }
+.mic-chip.current { border-color: var(--accent); color: var(--text); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent); }
+.mic-chip.done { background: var(--ok); border-color: var(--ok); color: var(--on-ok); }
+.mic-feedback { min-height: 26px; font-size: 15px; margin: 6px 0; color: var(--muted); }
+.mic-feedback.ok { color: var(--ok); }
+.mic-feedback.bad { color: var(--bad); }
+.mic-live { display: inline-flex; gap: 8px; align-items: baseline; font-size: 14px; }
+.mic-live strong { font-size: 18px; min-width: 2.2em; }
+.mic-live-cents { font-variant-numeric: tabular-nums; }
+.mic-result { margin-top: 0; }
+.mic-result.ok { border-color: var(--ok); }
+.mic-result.bad { border-color: var(--bad); }
+.mic-fb { margin-top: 16px; }
+.mic-memo-top { display: flex; gap: 22px; align-items: baseline; }
+.mic-timer { font-size: 34px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent); min-width: 2.4em; }
+.mic-score { font-size: 24px; font-weight: 600; }
+.mic-timebar { height: 6px; background: var(--panel-2); border-radius: 3px; overflow: hidden; margin: 6px 0; }
+.mic-timebar > div { height: 100%; background: var(--accent); transition: width 0.1s linear; }
+.mic-history { margin: 0; padding-left: 18px; }
+
+/* lesson block */
+.mic-playit { background: var(--panel); border: var(--bw) solid var(--border); border-left: calc(var(--bw) * 3) solid var(--ok); border-radius: var(--radius); padding: 14px 18px 16px; margin: 18px 0; }
+.mic-playit-title { font-size: 13px; letter-spacing: 0; color: var(--ok); font-weight: 700; }
+.mic-playit-title .mic-glyph { color: inherit; }
+.mic-playit-prompt { font-size: 17px; margin: 6px 0 4px; }
+.mic-playit-hint { margin: 0 0 4px; font-size: 14px; }
+.mic-playit-row { margin-top: 8px; }
+.mic-playit-result { margin: 8px 0 0; }
+.mic-playit-result.ok { color: var(--ok); }
+
+@media (max-width: 760px) {
+  .mic-gauge { grid-template-columns: 1fr; }
+  .mic-strings { grid-template-columns: repeat(3, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mic-needle, .mic-meter-fill, .mic-timebar > div { transition: none; }
+}
+
+.mic-page > p { max-width: 78ch; line-height: 1.65; margin-bottom: 24px; }
+.mic-page .mic-bar { border-radius: 0; border-left: 0; border-right: 0; background: transparent; box-shadow: none; padding: 20px 0; }
+.mic-page .mic-bar-level { min-width: min(100%, 200px); font-size: 13px; }
+.mic-page .mic-bar-opts { gap: 16px 24px; }
+.mic-page .mic-field { min-width: 0; max-width: 100%; font-size: 13px; flex-wrap: wrap; }
+.mic-page .mic-field select { min-width: 0; max-width: 100%; }
+.mic-page .mic-tabs { margin-top: 28px; margin-bottom: 20px; }
+.mic-page .mic-tab { padding: 12px 16px; font-size: 14px; }
+.mic-page .mic-modes { flex-wrap: wrap; gap: 4px; margin-top: 0; }
+.mic-page .mic-modes .btn { border-radius: 6px; font-size: 13px; min-height: 36px; }
+.mic-page .mic-gauge { grid-template-columns: minmax(0, 1fr); gap: 0; margin: 18px 0; padding: 20px; border-radius: 6px; max-width: 760px; }
+.mic-page .mic-gauge.in-tune { box-shadow: none; }
+.mic-page .mic-gauge-svg { max-width: 380px; display: block; justify-self: center; }
+.mic-page .mic-readout { width: 100%; display: flex; flex-direction: column; align-items: center; min-height: 178px; }
+.mic-page .mic-note { font-variant-numeric: tabular-nums; }
+.mic-page .mic-note sub { font-size: 22px; }
+.mic-page .mic-sub { min-height: 23px; line-height: 23px; }
+.mic-page .mic-cents { min-height: 29px; font-size: 18px; margin-top: 4px; line-height: 1.6; }
+.mic-page .mic-verdict { min-height: 26px; line-height: 1.6; font-size: 14px; }
+.mic-page .mic-hz { min-height: 21px; font-size: 12px; line-height: 1.6; }
+.mic-page .mic-strings { gap: 8px; max-width: 760px; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.mic-page .mic-string { border-radius: 6px; min-width: 0; }
+.mic-page .mic-string-main { min-height: 76px; gap: 3px; }
+.mic-page .mic-string-main > .muted { font-size: 12px; }
+.mic-page .mic-string-name { font-size: 24px; }
+.mic-page .mic-ref { min-height: 34px; }
+.mic-page .mic-hint { line-height: 1.65; max-width: 86ch; }
+.mic-page .mic-card { border-radius: 6px; padding: 20px; gap: 10px; }
+.mic-page .mic-card h3 { font-size: 17px; line-height: 1.45; }
+.mic-page .mic-card p { line-height: 1.6; }
+.mic-page .mic-card-top .mic-glyph { display: inline-flex; align-items: center; flex: none; }
+.mic-page .mic-settings { border: 0; border-radius: 0; padding: 0 0 24px; margin: 0 0 24px; border-bottom: var(--bw) solid var(--border); background: transparent; box-shadow: none; }
+.mic-playit-title .mic-glyph { display: inline-flex; vertical-align: -3px; }
+.mic-page .mic-card .row { margin-top: 8px; }
+.mic-page .mic-session-head { margin: 28px 0 20px; gap: 14px; flex-wrap: wrap; }
+.mic-page .mic-session-head h2 { font-size: 21px; line-height: 1.4; }
+.mic-page .mic-prompt-card { border: 0; border-radius: 0; padding: 0; background: transparent; box-shadow: none; }
+.mic-page .mic-prompt { font-size: 20px; line-height: 1.5; }
+.mic-page .mic-bignote { font-size: 36px; }
+.mic-page .mic-prompt-card > .row { flex-wrap: wrap; gap: 12px; }
+.mic-page .mic-feedback { min-height: 30px; line-height: 1.6; margin: 12px 0; }
+.mic-page .mic-memo-top { flex-wrap: wrap; gap: 16px; }
+.mic-page .mic-result { border-radius: 6px; padding: 20px; line-height: 1.6; }
+.mic-playit { border-radius: 6px; }
+@media (max-width: 760px) {
+  .mic-page .mic-strings { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .mic-page .mic-bar-main { align-items: flex-start; }
+  .mic-page .mic-bar-level { flex-basis: 100%; }
+  .mic-page .mic-gauge { padding: 16px; }
+}
+@media (max-width: 480px) {
+  .mic-page .mic-tab { padding: 10px; }
+  .mic-page .mic-field:has(select) { align-items: flex-start; flex-direction: column; width: 100%; }
+  .mic-page .mic-field select { width: 100%; }
+  .mic-page .mic-field-row { gap: 20px; }
+  .mic-page .mic-seg { flex-wrap: wrap; }
+}

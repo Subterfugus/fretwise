@@ -1,0 +1,42 @@
+.library-tabs { display: flex; flex-wrap: wrap; gap: 2px; border-bottom: var(--bw) solid var(--border); margin: 24px 0 20px; }
+.library-tabs button { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; background: transparent; border: 0; border-bottom: calc(var(--bw) * 2) solid transparent; cursor: pointer; }
+.library-tabs button.on { border-bottom-color: var(--accent); color: var(--accent); }
+.library-tabs button span { color: var(--muted); font-size: 13px; }
+.library-search { display: flex; align-items: center; gap: 10px; border: var(--bw) solid var(--border); border-radius: 8px; background: var(--panel-2); padding: 4px 10px; color: var(--muted); }
+.library-search:focus-within { outline: var(--focus-w) solid var(--accent); outline-offset: 2px; }
+.library-search input { flex: 1; min-width: 0; border: 0; background: transparent; padding: 8px 0; border-radius: 0; }
+.library-search input:focus { outline: none; }
+.library-clear, .bookmark-toggle { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; flex: 0 0 36px; border: var(--bw) solid transparent; border-radius: 6px; background: transparent; cursor: pointer; color: var(--muted); }
+.library-clear:disabled { opacity: .25; cursor: default; }
+.bookmark-toggle:hover, .library-clear:hover:not(:disabled) { border-color: var(--border); background: var(--panel-2); color: var(--text); }
+.bookmark-toggle.saved { color: var(--accent); }
+.bookmark-toggle:focus-visible, .library-clear:focus-visible, .library-open:focus-visible, .library-tabs button:focus-visible { outline: var(--focus-w) solid var(--accent); outline-offset: 2px; }
+.library-filters { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; margin-top: 16px; }
+.library-filters label { display: flex; flex-direction: column; gap: 4px; color: var(--muted); font-size: 13px; min-width: 0; }
+.library-filters label:first-child { flex: 1 1 240px; }
+.library-filters select { width: 100%; max-width: 100%; font-size: 14px; }
+.library-count { font-size: 13px; margin: 18px 0 8px; }
+.library-results { list-style: none; padding: 0; margin: 0; }
+.library-result { display: flex; align-items: flex-start; gap: 16px; border-bottom: var(--bw) solid var(--border); padding: 20px 0; }
+.library-result .bookmark-toggle { margin-top: 4px; }
+.library-open { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 0; padding: 0; border: 0; background: transparent; text-align: left; cursor: pointer; overflow-wrap: anywhere; line-height: 1.5; }
+.library-open:hover .library-title { color: var(--accent-2); }
+.library-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; color: var(--muted); font-size: 12px; }
+.library-meta > span { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 5px; }
+.library-title { font-size: 17px; font-weight: 600; line-height: 1.45; }
+.library-unit { color: var(--muted); font-size: 12px; }
+.library-snippet { font-size: 14px; color: var(--muted); margin-top: 5px; line-height: 1.65; max-width: 88ch; }
+.lesson-library mark { background: transparent; color: var(--accent); font-weight: 600; }
+.library-empty { padding: 24px 0; border-top: var(--bw) solid var(--border); }
+.library-empty h2 { margin-top: 0; }
+.lesson-heading { display: flex; align-items: flex-start; gap: 16px; margin-top: 8px; }
+.lesson-heading h1 { flex: 1; min-width: 0; }
+.lesson-entry { display: flex; align-items: center; gap: 8px; }
+.lesson-entry .lesson-item { flex: 1; min-width: 0; }
+.lesson-entry .bookmark-toggle { margin-right: 8px; }
+@media (max-width: 650px) {
+  .library-tabs button { padding: 8px; gap: 5px; }
+  .library-filters label { flex: 1 1 100%; }
+  .library-title { font-size: 16px; }
+  .library-result { gap: 4px; }
+}

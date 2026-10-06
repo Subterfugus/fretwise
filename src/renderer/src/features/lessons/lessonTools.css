@@ -1,0 +1,10 @@
+.lesson-tool-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin: 16px 0 0; padding: 14px 0 0; border-top: var(--bw) solid var(--border); }
+.lesson-tool-name { color: var(--muted); font-size: 0.85rem; overflow-wrap: anywhere; }
+.lesson-tool-example { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.85rem; min-width: 0; max-width: 100%; }
+.lesson-tool-example span { color: var(--muted); }
+.lesson-tool-example select { max-width: min(480px, 100%); min-width: 0; }
+.lesson-tool-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+.lesson-tool-buttons .btn { font-size: 13px; min-height: 34px; padding: 7px 10px; }
+.tools-lesson-return { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 12px; }
+.tools-lesson-return .btn { white-space: normal; text-align: left; }
+[data-lesson-block] { scroll-margin-top: 16px; }

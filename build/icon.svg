@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#262a33"/>
+      <stop offset="1" stop-color="#121418"/>
+    </linearGradient>
+    <linearGradient id="pick" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#ffc867"/>
+      <stop offset="0.55" stop-color="#f0a640"/>
+      <stop offset="1" stop-color="#d9822a"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0.38" cy="0.28" r="0.55">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="pickClip">
+      <path id="pickPath" d="M512 168 C 716 168 836 246 836 384 C 836 572 650 776 512 872 C 374 776 188 572 188 384 C 188 246 308 168 512 168 Z"/>
+    </clipPath>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- tile -->
+  <rect x="32" y="32" width="960" height="960" rx="210" fill="url(#bg)"/>
+  <rect x="32" y="32" width="960" height="960" rx="210" fill="none" stroke="#3a404c" stroke-width="6"/>
+
+  <!-- pick -->
+  <g filter="url(#shadow)">
+    <path d="M512 168 C 716 168 836 246 836 384 C 836 572 650 776 512 872 C 374 776 188 572 188 384 C 188 246 308 168 512 168 Z" fill="url(#pick)"/>
+  </g>
+
+  <!-- fretboard grid inside the pick -->
+  <g clip-path="url(#pickClip)">
+    <!-- nut -->
+    <rect x="340" y="300" width="344" height="22" rx="6" fill="#2b1a07" opacity="0.9"/>
+    <!-- frets -->
+    <g stroke="#2b1a07" stroke-width="10" stroke-linecap="round" opacity="0.55">
+      <line x1="340" y1="420" x2="684" y2="420"/>
+      <line x1="340" y1="540" x2="684" y2="540"/>
+      <line x1="340" y1="660" x2="684" y2="660"/>
+    </g>
+    <!-- strings -->
+    <g stroke="#2b1a07" stroke-linecap="round" opacity="0.8">
+      <line x1="382" y1="311" x2="382" y2="900" stroke-width="9"/>
+      <line x1="469" y1="311" x2="469" y2="900" stroke-width="8"/>
+      <line x1="555" y1="311" x2="555" y2="900" stroke-width="7"/>
+      <line x1="642" y1="311" x2="642" y2="900" stroke-width="6"/>
+    </g>
+    <path d="M512 168 C 716 168 836 246 836 384 C 836 572 650 776 512 872 C 374 776 188 572 188 384 C 188 246 308 168 512 168 Z" fill="url(#shine)"/>
+  </g>
+
+  <!-- finger dots: root (dark) and a teal chord tone, like the in-app fretboard -->
+  <circle cx="469" cy="480" r="38" fill="#1d1408"/>
+  <circle cx="555" cy="600" r="38" fill="#4fb3bf" stroke="#1d1408" stroke-width="8"/>
+</svg>

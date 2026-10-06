@@ -1,0 +1,50 @@
+.tools-pane.identifier-pane { gap: 0; }
+.identifier-pane .identifier-controls { gap: 12px 20px; margin: 0; padding: 0 0 16px; }
+.identifier-controls select { max-width: 100%; min-width: 160px; font-size: 13px; }
+.identifier-controls input { width: 76px; font-size: 13px; }
+.identifier-controls .tools-field { min-width: 0; font-size: 12px; }
+.identifier-controls .tools-seg button { font-size: 13px; padding: 7px 12px; min-height: 36px; }
+.identifier-result { border-block: var(--bw) solid var(--border); padding: 16px 0; }
+.identifier-name { display: flex; gap: 6px 14px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }
+.identifier-name h2 { font-size: 24px; line-height: 1.3; letter-spacing: 0; margin: 0; overflow-wrap: anywhere; }
+.identifier-name > .muted { font-size: 13px; }
+.identifier-result > p { font-size: 12px; }
+.identifier-facts { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 13px; }
+.identifier-bass, .identifier-bass-degree { display: flex; align-items: baseline; gap: 8px; }
+.identifier-tones { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 10px; }
+.identifier-tone-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.identifier-tone { display: inline-flex; gap: 7px; padding: 2px 6px; border: var(--bw) solid var(--border); border-radius: 4px; background: var(--panel-2); align-items: baseline; font-weight: 600; line-height: 1.5; }
+.identifier-tone.root { border-color: var(--accent); background: var(--accent-tint); }
+.identifier-tone small { color: var(--muted); font-size: 11px; font-weight: 400; }
+.identifier-omissions { margin: 8px 0 0; }
+.identifier-omissions.omitted { color: var(--accent-2); }
+.identifier-alternatives { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.identifier-alternatives .tools-chip { border-radius: 5px; gap: 8px; padding: 5px 8px; font-size: 13px; min-height: 30px; }
+.identifier-alternatives .tools-chip small { font-size: 11px; }
+.identifier-alternatives .btn { font-size: 12px; padding: 5px 10px; }
+.identifier-actions { flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.identifier-actions .btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 6px 10px; }
+.identifier-strings { display: grid; gap: 0; margin-top: 12px; }
+.identifier-string, .identifier-string-head { display: grid; grid-template-columns: 80px 64px 36px 36px 80px minmax(70px, 1fr); align-items: center; gap: 12px; }
+.identifier-string-head { font-size: 11px; color: var(--muted); padding: 0 0 8px; border-bottom: var(--bw) solid var(--border); }
+.identifier-state-head { grid-column: span 2; text-align: center; }
+.identifier-string { padding: 7px 0; border-bottom: var(--bw) solid var(--border); font-size: 13px; min-height: 50px; }
+.identifier-string:hover { background: var(--hover); }
+.identifier-string .btn { display: inline-flex; width: 36px; height: 32px; align-items: center; justify-content: center; padding: 0; border-radius: 5px; }
+.identifier-string .btn span { display: none; }
+.identifier-string .on { color: var(--accent); border-color: var(--accent); background: var(--accent-tint); }
+.identifier-string input { width: 100%; min-width: 0; padding: 5px 8px; font-size: 13px; }
+.identifier-sounding:not(.muted) { font-weight: 600; }
+.looper-targets { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 10px 0; border-block: var(--bw) solid var(--border); padding: 12px 0; }
+.looper-target-current, .looper-target-next { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-height: 40px; }
+.looper-target-next { border-left: var(--bw) solid var(--border); padding-left: 12px; }
+@media (max-width: 700px) {
+  .identifier-string, .identifier-string-head { grid-template-columns: 65px 42px 32px 32px minmax(48px, 80px) minmax(50px, 1fr); gap: 6px; }
+  .identifier-string .btn { width: 32px; }
+  .identifier-controls .tools-field { flex: 1 1 140px; }
+  .identifier-controls .tools-field:has(input) { flex: 0 0 76px; }
+  .identifier-controls select { width: 100%; min-width: 0; }
+  .identifier-name h2 { font-size: 22px; }
+  .looper-targets { grid-template-columns: 1fr; }
+  .looper-target-next { border-left: 0; border-top: var(--bw) solid var(--border); padding: 8px 0 0; }
+}

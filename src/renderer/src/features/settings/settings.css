@@ -1,0 +1,20 @@
+.settings { max-width: 1060px; }
+.settings .settings-section { border-top: var(--bw) solid var(--border); padding: 24px 0 28px; margin-top: 24px; }
+.settings .settings-section h3 { font-size: 18px; line-height: 1.4; margin: 0 0 20px; }
+.settings .settings-section > p { line-height: 1.6; margin: 0 0 16px; }
+.settings .field { display: grid; grid-template-columns: 160px minmax(0, 350px); align-items: center; gap: 10px 24px; margin: 0; padding: 10px 0; }
+.settings .field > span:first-child { color: var(--text); font-size: 14px; }
+.settings .field select { width: 100%; max-width: 100%; }
+.settings .field input[type=range] { width: 100%; accent-color: var(--accent); }
+.settings .field > .muted { grid-column: 2; font-size: 13px; }
+.settings .settings-section > .play-btn { margin-top: 12px; }
+.settings .check { display: flex; align-items: flex-start; gap: 12px; margin: 12px 0; line-height: 1.6; }
+.settings .check input { width: 16px; height: 16px; margin-top: 4px; flex: none; accent-color: var(--accent); }
+.settings .settings-section > .row { gap: 12px; }
+.settings .settings-section > .row > span { flex-basis: 100%; max-width: 74ch; line-height: 1.65; }
+.settings > .small { max-width: 78ch; line-height: 1.6; }
+@media (max-width: 620px) {
+  .settings .field { grid-template-columns: minmax(0, 1fr); gap: 6px; max-width: 420px; }
+  .settings .field > .muted { grid-column: 1; }
+  .settings .settings-section { padding-top: 20px; }
+}
