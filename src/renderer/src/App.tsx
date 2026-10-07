@@ -13,7 +13,8 @@ import { MicPractice } from './features/mic/MicPractice'
 import { Tools, type ToolTab } from './features/tools/Tools'
 import { engine } from './audio/engine'
 import { ErrorBoundary } from './components/ErrorBoundary'
-import { AudioLines, Check, House, LockKeyhole, Mic, Search, Settings2, Wrench } from 'lucide-react'
+import { DESKTOP_DOWNLOAD_URL, isDesktop } from './platform'
+import { AudioLines, Check, Download, House, LockKeyhole, Mic, Search, Settings2, Wrench } from 'lucide-react'
 import { LessonLibrary } from './features/lessons/LessonLibrary'
 import { DEFAULT_LIBRARY, type LibraryState } from './features/lessons/lessonSearch'
 import type { DictView } from './features/tools/keyDictionary'
@@ -131,6 +132,11 @@ export function App() {
             )
           })}
         </div>
+        {!isDesktop && (
+          <a className="nav-item bottom" href={DESKTOP_DOWNLOAD_URL} title="Download the Fretwise desktop app for Windows">
+            <Download className="nav-ico" size={18} aria-hidden /> Download app
+          </a>
+        )}
         <button className={'nav-item bottom' + (route.page === 'settings' ? ' active' : '')} onClick={() => go({ page: 'settings' })}>
           <Settings2 className="nav-ico" size={18} aria-hidden /> Settings
         </button>

@@ -19,7 +19,7 @@ A desktop app that teaches music theory from a guitarist's point of view. Every 
   - note finder
   - scale comparison
   - metronome
-- **Settings:** seven themes (including light and high contrast), a left-handed fretboard, and a choice of sharps or flats for note names.
+- **Settings:** seven themes (including light and high contrast), a left-handed fretboard, a choice of sharps or flats for note names, and progress export and import (a JSON file that works in both the desktop app and the web version).
 
 ## Run
 

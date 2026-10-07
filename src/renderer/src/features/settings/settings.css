@@ -11,6 +11,8 @@
 .settings .check { display: flex; align-items: flex-start; gap: 12px; margin: 12px 0; line-height: 1.6; }
 .settings .check input { width: 16px; height: 16px; margin-top: 4px; flex: none; accent-color: var(--accent); }
 .settings .settings-section > .row { gap: 12px; }
+.settings .settings-section > .row + .row, .settings .settings-section > .row + .btn, .settings .settings-section > .row + p { margin-top: 16px; }
+.settings a.btn { text-decoration: none; color: inherit; }
 .settings .settings-section > .row > span { flex-basis: 100%; max-width: 74ch; line-height: 1.65; }
 .settings > .small { max-width: 78ch; line-height: 1.6; }
 @media (max-width: 620px) {

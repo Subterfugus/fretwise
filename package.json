@@ -33,6 +33,7 @@
             "icon": "build/icon.png"
         },
         "nsis": {
+            "artifactName": "Fretwise-Setup.${ext}",
             "oneClick": false,
             "allowToChangeInstallationDirectory": true
         }

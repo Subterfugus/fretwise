@@ -48,6 +48,8 @@ code { background: var(--panel-2); padding: 1px 6px; border-radius: 5px; font-si
 .nav-ico { width: 18px; height: 18px; flex: none; color: var(--muted); }
 .nav-item.active .nav-ico { color: var(--accent); }
 .nav-item.bottom { margin-top: 8px; }
+.nav-item.bottom + .nav-item.bottom { margin-top: 0; }
+a.nav-item { text-decoration: none; color: inherit; }
 .nav-section { font-size: 12px; font-weight: 600; color: var(--muted); padding: 16px 10px 6px; }
 .nav-units { overflow-y: auto; flex: 1; }
 .nav-unit { font-size: 13px; line-height: 1.35; padding: 8px 7px; gap: 8px; min-height: 44px; }

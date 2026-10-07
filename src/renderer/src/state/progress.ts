@@ -334,6 +334,17 @@ export const recordMicMemo = (difficulty: string, correct: number, wrong: number
   })
 }
 
+/** Replace everything with the contents of an exported file. Returns false (changing nothing) if it is not a Fretwise progress file. */
+export function importProgress(raw: unknown): boolean {
+  if (!isObj(raw) || raw.version !== 1 || !isObj(raw.settings)) return false
+  const next = mergeProgress(raw)
+  updateProgress((p) => {
+    Object.assign(p, next)
+    if (next.lastLesson === undefined) delete p.lastLesson // Object.assign leaves keys `next` doesn't have
+  })
+  return true
+}
+
 export const resetProgress = () =>
   updateProgress((p) => {
     const keep = p.settings

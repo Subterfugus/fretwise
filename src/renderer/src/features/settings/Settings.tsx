@@ -1,13 +1,14 @@
 import { useRef, useState } from 'react'
 import { engine, INSTRUMENTS, InstrumentId } from '@/audio/engine'
-import { resetProgress, updateProgress, useProgress } from '@/state/progress'
+import { getProgress, importProgress, resetProgress, updateProgress, useProgress } from '@/state/progress'
 import { PlayButton } from '@/components/PlayButton'
 import { OPEN_CHORDS, shapeMidis } from '@/theory/guitar'
 import { CIRCLE_MAJOR, CIRCLE_MINOR } from '@/theory/keys'
 import { pretty } from '@/theory/notes'
 import type { NoteNameSetting } from '@/theory/spelling'
 import { ThemePicker } from './ThemePicker'
-import { RotateCcw } from 'lucide-react'
+import { Download, RotateCcw, Upload } from 'lucide-react'
+import { DESKTOP_DOWNLOAD_URL, isDesktop } from '@/platform'
 import './settings.css'
 
 export function Settings() {
@@ -16,6 +17,9 @@ export function Settings() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const latest = useRef<InstrumentId | null>(null)
+  const fileInput = useRef<HTMLInputElement>(null)
+  const [pendingImport, setPendingImport] = useState<{ name: string; data: unknown } | null>(null)
+  const [importNote, setImportNote] = useState<string | null>(null)
 
   const setInstrument = async (id: InstrumentId) => {
     updateProgress((p) => void (p.settings.instrument = id))
@@ -31,6 +35,40 @@ export function Settings() {
       // An earlier selection finishing must not hide the "loading" state of a later one.
       if (latest.current === id) setLoading(false)
     }
+  }
+
+  const exportProgress = () => {
+    const url = URL.createObjectURL(new Blob([JSON.stringify(getProgress(), null, 2)], { type: 'application/json' }))
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `fretwise-progress-${new Date().toISOString().slice(0, 10)}.json`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
+  const chooseImport = async (file: File | undefined) => {
+    if (!file) return
+    setImportNote(null)
+    setPendingImport(null)
+    try {
+      const data: unknown = JSON.parse(await file.text())
+      // Checked again by importProgress; testing here lets a wrong file fail before the confirmation step.
+      if (!data || typeof data !== 'object' || (data as { version?: unknown }).version !== 1) throw new Error('not a progress file')
+      setPendingImport({ name: file.name, data })
+    } catch {
+      setImportNote(`"${file.name}" is not a Fretwise progress file.`)
+    }
+  }
+
+  const confirmImport = () => {
+    if (!pendingImport) return
+    const ok = importProgress(pendingImport.data)
+    setImportNote(ok ? `Imported "${pendingImport.name}".` : `"${pendingImport.name}" is not a Fretwise progress file.`)
+    setPendingImport(null)
+    if (!ok) return
+    const s = getProgress().settings
+    engine.setVolume(s.volume)
+    void setInstrument(s.instrument)
   }
 
   return (
@@ -106,7 +144,40 @@ export function Settings() {
 
       <section className="settings-section">
         <h3>Progress</h3>
-        <p className="muted">Your progress is saved automatically on this computer.</p>
+        <p className="muted">
+          Your progress is saved automatically {isDesktop ? 'on this computer' : 'in this browser'}. Export it to a file to keep a backup or to
+          move it to another device{isDesktop ? ' or the web version' : ' or the desktop app'}.
+        </p>
+        <div className="row">
+          <button className="btn" onClick={exportProgress}>
+            <Download size={16} aria-hidden /> Export progress
+          </button>
+          <button className="btn" onClick={() => fileInput.current?.click()}>
+            <Upload size={16} aria-hidden /> Import progress…
+          </button>
+          <input
+            ref={fileInput}
+            type="file"
+            accept="application/json,.json"
+            hidden
+            onChange={(e) => {
+              void chooseImport(e.target.files?.[0])
+              e.target.value = '' // so choosing the same file again still fires onChange
+            }}
+          />
+        </div>
+        {pendingImport && (
+          <div className="row">
+            <span>Replace all progress, bookmarks, presets and settings here with "{pendingImport.name}"? This cannot be undone.</span>
+            <button className="btn danger" onClick={confirmImport}>
+              Yes, replace
+            </button>
+            <button className="btn ghost" onClick={() => setPendingImport(null)}>
+              Cancel
+            </button>
+          </div>
+        )}
+        {importNote && <p className="muted" role="status">{importNote}</p>}
         {confirm ? (
           <div className="row">
             <span>Erase lesson, quiz, ear-training, mic and practice progress? Saved presets and bookmarks stay.</span>
@@ -129,6 +200,16 @@ export function Settings() {
           </button>
         )}
       </section>
+
+      {!isDesktop && (
+        <section className="settings-section">
+          <h3>Desktop app</h3>
+          <p className="muted">Fretwise is also a Windows app that works offline and keeps your progress in a file on your computer.</p>
+          <a className="btn" href={DESKTOP_DOWNLOAD_URL}>
+            <Download size={16} aria-hidden /> Download for Windows
+          </a>
+        </section>
+      )}
 
       <p className="muted small">
         Instrument samples: tonejs-instruments by Nicholaus P. Brosowsky (CC-BY 3.0). Notation: VexFlow. Audio: Tone.js.
