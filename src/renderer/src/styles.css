@@ -305,12 +305,36 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline: var(--fo
   .app { grid-template-columns: 196px minmax(0, 1fr); }
   .page { padding: 24px 20px 48px; }
 }
-@media (max-width: 650px) {
-  .app { grid-template-columns: 150px minmax(0, 1fr); }
-  .sidebar { padding: 10px 5px; }
-  .nav-item { font-size: 12px; }
-  .nav-ico { display: none; }
-  .page { padding-left: 12px; padding-right: 12px; }
+/* Phone layout (browser build only: the desktop window cannot get this narrow).
+   The sidebar turns into a drawer opened from a top bar. */
+.topbar, .sidebar-close, .sidebar-backdrop { display: none; }
+@media (max-width: 700px) {
+  .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); height: 100dvh; }
+  .topbar {
+    display: flex; align-items: center; gap: 4px; padding: 6px 8px;
+    background: var(--panel); border-bottom: var(--bw) solid var(--border);
+  }
+  .topbar-menu, .topbar-brand, .sidebar-close {
+    display: flex; align-items: center; gap: 8px; min-width: 44px; min-height: 44px;
+    background: none; border: 0; border-radius: 8px; color: var(--text); cursor: pointer;
+  }
+  .topbar-menu, .sidebar-close { justify-content: center; }
+  .topbar-brand { font-weight: 700; font-size: 18px; padding: 0 8px; }
+  .sidebar {
+    position: fixed; inset: 0 auto 0 0; z-index: 40; width: min(300px, 86vw);
+    transform: translateX(-100%); visibility: hidden;
+    transition: transform 0.2s ease, visibility 0.2s;
+  }
+  .sidebar.open { transform: none; visibility: visible; box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); }
+  .sidebar .brand { padding-right: 48px; }
+  .sidebar .nav-item { min-height: 44px; font-size: 15px; }
+  .sidebar-close { position: absolute; top: 8px; right: 6px; }
+  .sidebar-backdrop { display: block; position: fixed; inset: 0; z-index: 39; background: rgba(0, 0, 0, 0.5); }
+  .page { padding: 20px 14px 48px; }
+  h1 { font-size: 24px; }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+  .sidebar { transition: none; }
 }
 
 .nav-subsection { font-size: 11px; font-weight: 600; line-height: 1.4; color: var(--muted); padding: 18px 7px 5px; }

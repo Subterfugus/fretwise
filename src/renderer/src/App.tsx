@@ -13,8 +13,8 @@ import { MicPractice } from './features/mic/MicPractice'
 import { Tools, type ToolTab } from './features/tools/Tools'
 import { engine } from './audio/engine'
 import { ErrorBoundary } from './components/ErrorBoundary'
-import { DESKTOP_DOWNLOAD_URL, isDesktop } from './platform'
-import { AudioLines, Check, Download, House, LockKeyhole, Mic, Search, Settings2, Wrench } from 'lucide-react'
+import { DESKTOP_DOWNLOAD_URL, offerDesktopDownload } from './platform'
+import { AudioLines, Check, Download, House, LockKeyhole, Menu, Mic, Search, Settings2, Wrench, X } from 'lucide-react'
 import { LessonLibrary } from './features/lessons/LessonLibrary'
 import { DEFAULT_LIBRARY, type LibraryState } from './features/lessons/lessonSearch'
 import type { DictView } from './features/tools/keyDictionary'
@@ -43,8 +43,18 @@ export function App() {
   const [library, setLibrary] = useState<LibraryState>(DEFAULT_LIBRARY)
   const [searchFocus, setSearchFocus] = useState(0)
 
+  // Narrow screens (browser build on a phone): the sidebar becomes a drawer opened from the top bar.
+  const [menuOpen, setMenuOpen] = useState(false)
+  useEffect(() => {
+    if (!menuOpen) return
+    const close = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenuOpen(false) }
+    window.addEventListener('keydown', close)
+    return () => window.removeEventListener('keydown', close)
+  }, [menuOpen])
+
   const go = (r: Route) => {
     engine.stop()
+    setMenuOpen(false)
     if (r.page === 'library' && r.savedOnly !== undefined) setLibrary((s) => ({ ...s, savedOnly: r.savedOnly! }))
     setRoute(r)
     setNav((n) => n + 1)
@@ -84,7 +94,19 @@ export function App() {
 
   return (
     <div className="app">
-      <nav className="sidebar" aria-label="Main navigation">
+      <header className="topbar">
+        <button className="topbar-menu" aria-label="Open menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}>
+          <Menu size={22} aria-hidden />
+        </button>
+        <button className="topbar-brand" aria-label="Fretwise home" onClick={() => go({ page: 'home' })}>
+          <img src="/icon.png" alt="" width={22} height={22} /> Fretwise
+        </button>
+      </header>
+      {menuOpen && <div className="sidebar-backdrop" onClick={() => setMenuOpen(false)} />}
+      <nav className={'sidebar' + (menuOpen ? ' open' : '')} aria-label="Main navigation">
+        <button className="sidebar-close" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
+          <X size={20} aria-hidden />
+        </button>
         <button className="brand" aria-label="Fretwise home" onClick={() => go({ page: 'home' })}>
           <img src="/icon.png" alt="" width={26} height={26} /> Fretwise
         </button>
@@ -132,7 +154,7 @@ export function App() {
             )
           })}
         </div>
-        {!isDesktop && (
+        {offerDesktopDownload && (
           <a className="nav-item bottom" href={DESKTOP_DOWNLOAD_URL} title="Download the Fretwise desktop app for Windows">
             <Download className="nav-ico" size={18} aria-hidden /> Download app
           </a>

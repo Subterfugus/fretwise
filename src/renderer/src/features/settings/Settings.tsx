@@ -8,7 +8,7 @@ import { pretty } from '@/theory/notes'
 import type { NoteNameSetting } from '@/theory/spelling'
 import { ThemePicker } from './ThemePicker'
 import { Download, RotateCcw, Upload } from 'lucide-react'
-import { DESKTOP_DOWNLOAD_URL, isDesktop } from '@/platform'
+import { DESKTOP_DOWNLOAD_URL, isDesktop, offerDesktopDownload } from '@/platform'
 import './settings.css'
 
 export function Settings() {
@@ -146,7 +146,7 @@ export function Settings() {
         <h3>Progress</h3>
         <p className="muted">
           Your progress is saved automatically {isDesktop ? 'on this computer' : 'in this browser'}. Export it to a file to keep a backup or to
-          move it to another device{isDesktop ? ' or the web version' : ' or the desktop app'}.
+          move it to another device{isDesktop ? ' or the web version' : ' or the Windows desktop app'}.
         </p>
         <div className="row">
           <button className="btn" onClick={exportProgress}>
@@ -201,7 +201,7 @@ export function Settings() {
         )}
       </section>
 
-      {!isDesktop && (
+      {offerDesktopDownload && (
         <section className="settings-section">
           <h3>Desktop app</h3>
           <p className="muted">Fretwise is also a Windows app that works offline and keeps your progress in a file on your computer.</p>
