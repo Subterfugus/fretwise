@@ -56,6 +56,10 @@ The instrument samples are included in the repository, so the app works offline.
 
 For architecture, design decisions and project status, see [info.md](info.md).
 
+## Licence
+
+The code and lesson content are released under the [MIT licence](LICENSE). The instrument samples are third-party recordings under CC-BY 3.0 (see Credits) and keep that licence.
+
 ## Credits
 
 - Instrument samples: [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments) by Nicholaus P. Brosowsky, CC-BY 3.0

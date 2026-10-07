@@ -5,6 +5,7 @@
     "description": "Guitar-first music theory teacher with lessons, unit quizzes and ear training",
     "main": "./out/main/index.js",
     "private": true,
+    "license": "MIT",
     "scripts": {
         "dev": "electron-vite dev",
         "build": "electron-vite build",
