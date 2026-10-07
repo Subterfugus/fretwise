@@ -40,6 +40,8 @@ The instrument samples are included in the repository, so the app works offline.
 | `npm test` | Runs the test suite (Vitest) |
 | `npm run typecheck` | TypeScript check |
 | `npm run build:win` | Builds a Windows installer into `dist/` |
+| `npm run build:web` | Builds the browser version into `dist-web/` |
+| `npm run deploy:web` | Builds the browser version and deploys it to Cloudflare (<https://fretwise.eidsonbrady.com>) |
 | `npx vite --config vite.preview.config.ts` | Runs the interface alone in a browser at `http://localhost:5199` |
 | `npm run fetch-samples` | Re-downloads the instrument samples (only needed if they are missing) |
 | `npm run render-icon` | Regenerates the app icon from `build/icon.svg` |

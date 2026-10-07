@@ -14,6 +14,8 @@
         "test": "vitest run",
         "fetch-samples": "node scripts/fetch-samples.mjs",
         "build:win": "electron-vite build && electron-builder --win",
+        "build:web": "vite build --config vite.preview.config.ts --outDir ../../dist-web --emptyOutDir",
+        "deploy:web": "npm run build:web && wrangler deploy",
         "render-icon": "electron scripts/render-icon.cjs"
     },
     "build": {

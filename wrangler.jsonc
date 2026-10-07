@@ -1,0 +1,7 @@
+// Cloudflare deployment of the browser build (npm run deploy:web).
+{
+  "name": "fretwise",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "./dist-web" },
+  "routes": [{ "pattern": "fretwise.eidsonbrady.com", "custom_domain": true }]
+}
