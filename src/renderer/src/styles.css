@@ -325,11 +325,11 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline: var(--fo
     transform: translateX(-100%); visibility: hidden;
     transition: transform 0.2s ease, visibility 0.2s;
   }
-  .sidebar.open { transform: none; visibility: visible; box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); }
+  .sidebar.open { transform: none; visibility: visible; box-shadow: 0 0 40px var(--shadow); }
   .sidebar .brand { padding-right: 48px; }
   .sidebar .nav-item { min-height: 44px; font-size: 15px; }
   .sidebar-close { position: absolute; top: 8px; right: 6px; }
-  .sidebar-backdrop { display: block; position: fixed; inset: 0; z-index: 39; background: rgba(0, 0, 0, 0.5); }
+  .sidebar-backdrop { display: block; position: fixed; inset: 0; z-index: 39; background: var(--backdrop); }
   .page { padding: 20px 14px 48px; }
   h1 { font-size: 24px; }
 }
