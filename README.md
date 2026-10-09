@@ -1,6 +1,60 @@
+<div align="center">
+
+<img src="build/icon.png" width="96" alt="Fretwise icon">
+
 # Fretwise
 
-A desktop app that teaches music theory from a guitarist's point of view. Every idea is shown on the fretboard and played with real recorded guitar samples.
+**Music theory for guitarists, taught on the fretboard.**
+
+102 lessons, ear training, a tuner and ten practice tools.<br>
+Every idea is shown on the neck and played with real recorded guitar samples.
+
+[![Try it in your browser](https://img.shields.io/badge/Try_it-in_your_browser-f0a63c?style=for-the-badge)](https://fretwise.eidsonbrady.com)
+[![Download for Windows](https://img.shields.io/badge/Download-for_Windows-3aa9b8?style=for-the-badge)](https://github.com/Subterfugus/fretwise/releases/latest/download/Fretwise-Setup.exe)
+
+[![Latest release](https://img.shields.io/github/v/release/Subterfugus/fretwise?label=release)](https://github.com/Subterfugus/fretwise/releases/latest)
+[![Licence: MIT](https://img.shields.io/github/license/Subterfugus/fretwise?label=licence)](LICENSE)
+
+<br>
+
+<a href="https://fretwise.eidsonbrady.com"><img src="docs/screenshots/explorer.png" alt="The fretboard explorer showing C major across the neck"></a>
+
+</div>
+
+## Get it
+
+- **In a browser:** open <https://fretwise.eidsonbrady.com>. There is nothing to install, it works on phones, and your progress is saved in that browser.
+- **On Windows:** download [Fretwise-Setup.exe](https://github.com/Subterfugus/fretwise/releases/latest/download/Fretwise-Setup.exe). It works offline. The installer is not code-signed, so Windows SmartScreen may warn before it runs.
+
+Progress can be exported to a file and imported again, so you can move between the two.
+
+## A look around
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/dashboard.png" alt="Dashboard with lesson, unit and ear-training progress"><br><b>A path, not a pile.</b> 18 units in five stages. Pass a unit's quiz to unlock the next.</td>
+    <td width="50%"><img src="docs/screenshots/lesson.png" alt="A lesson on octave shapes with fretboard diagrams"><br><b>Lessons on the neck.</b> Each idea comes with a fretboard diagram you can hear.</td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/ear-training.png" alt="Ear training drills with accuracy rings"><br><b>Ear training.</b> Seven drills that track what you miss and drill it again.</td>
+    <td><img src="docs/screenshots/looper.png" alt="Backing-track looper with target tones on the fretboard"><br><b>Backing-track looper.</b> Loop a progression and see the target tones change with each chord.</td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/dictionary.png" alt="Chord and scale dictionary showing Cmaj7"><br><b>Chord and scale dictionary.</b> Search any chord, key or scale and filter its voicings.</td>
+    <td><img src="docs/screenshots/theme-sunburst.png" alt="The fretboard explorer in the Sunburst theme"><br><b>Seven themes.</b> This is Sunburst. There are light and high-contrast themes too.</td>
+  </tr>
+</table>
+
+<details>
+<summary>Light theme and phone layout</summary>
+<br>
+<table>
+  <tr>
+    <td width="75%"><img src="docs/screenshots/theme-light.png" alt="The fretboard explorer in the light theme"></td>
+    <td width="25%"><img src="docs/screenshots/phone.png" alt="The fretboard explorer on a phone"></td>
+  </tr>
+</table>
+</details>
 
 ## What's in it
 
@@ -21,7 +75,7 @@ A desktop app that teaches music theory from a guitarist's point of view. Every 
   - metronome
 - **Settings:** seven themes (including light and high contrast), a left-handed fretboard, a choice of sharps or flats for note names, and progress export and import (a JSON file that works in both the desktop app and the web version).
 
-## Run
+## Build from source
 
 Needs Node.js 22 or later.
 
